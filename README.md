@@ -5,4 +5,3 @@ grant all privileges on *.* to 'cos'@'%';
 create database security;
 use security;
 ```
-미완성

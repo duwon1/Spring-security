@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedBy;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +27,10 @@ public class User {
 	private Timestamp createDate;
 	@UpdateTimestamp // update 가 발생할때 마다 현재시간을 채워넣음
 	private Timestamp updateDate;
+	@CreationTimestamp
+	private Timestamp loginDate;
+	
+	
 	
 
 }

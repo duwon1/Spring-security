@@ -5,6 +5,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.security.model.User;
 import com.cos.security.repository.UserRepository;
@@ -28,7 +30,7 @@ public class IndexController {
 	}
 	
 	@GetMapping("/user")
-	public String user() {
+	public @ResponseBody String user() {
 		return "user";
 	}
 	
@@ -42,7 +44,6 @@ public class IndexController {
 		return "manager";
 	}
 	
-	// 스프링시큐리티가 http://localhost:8070/login 주소를 낚아챔
 	@GetMapping("/loginForm")
 	public String loginForm() {
 		return "loginForm";

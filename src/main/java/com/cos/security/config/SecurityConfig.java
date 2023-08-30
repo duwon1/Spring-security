@@ -40,11 +40,13 @@ public class SecurityConfig {
 		http.authorizeHttpRequests(authorize -> {
 			try {
 				authorize
-					.requestMatchers("/user/**").authenticated()
+					.requestMatchers("/user/**").authenticated() // 인증만 되면 허용됨
 					.requestMatchers("/manager/**").hasAnyRole("MANAGER", "ADMIN") // manager, admin 권한 둘중 하나가 있어야 허용
 				    .requestMatchers("/admin/**").hasRole("ADMIN") // admin 권한이 있어야 허용
 				    .anyRequest().permitAll()
-				    .and().formLogin().loginPage("/loginForm"); // 해당 권한이 없을시 /login 페이지로 리다이렉트
+				    .and().formLogin().loginPage("/loginForm") // 해당 권한이 없을시 /login 페이지로 리다이렉트
+				    .loginProcessingUrl("/login") // /login 주소가 호출이 되면 시큐리티가 낚아채서 대신 로그인을 진행해줌
+				    .defaultSuccessUrl("/"); // 로그인 성공시 이동 할 페이지
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
