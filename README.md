@@ -24,18 +24,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-//	authenticated() ;  인증된 사용자의 접근을 허용
-//	fullyAuthenticated(): 인증된 사용자의 접근을 허용,  rememberMe인증 제외
-//	permitAll(): 무조건 허용
-//	denyAll(): 무조건 차단
-//	anonymous(): 익명사용자 허용
-//	rememberMe(): rememberMe 인증 사용자 접근 허용
-//	access(String): 주어진 SpEL표현식의 평가 결과가 true 이면 접근허용
-//	hasRole(String): 사용자가 주어진 역할이 있다면 접근을 허용
-//	hasAuthority(String): 사용자가 주어진 권한이 있다면 허용
-//	hasAnyRole(String...): 사용자가 주어진 어떤권한이라도 있으면 허용
-//	hasAnyAuthority(String...): 사용자가 주어진 권한중 어떤 것이라도 있다면 허용
-//	hasIpAddress(String): 주어진 IP로 부터 요청이 왔다면 접근을 허용
 	
 	@Bean
 	BCryptPasswordEncoder encodePwd() {
@@ -51,7 +39,7 @@ public class SecurityConfig {
 				.requestMatchers("/manager/**").hasAnyRole("ADMIN", "MANAGER") // manager, admin 권한 둘중 하나가 있어야 허용
 				// 데이터베이스에 데이터를 저장할때 ROLE_XXXX 라고 반드시 저장해야 인식을 함
 			    .requestMatchers("/admin/**").hasRole("ADMIN") // admin 권한이 있어야 허용
-			    .anyRequest().permitAll();
+			    .anyRequest().permitAll(); // 위에 해당할 경우 무조껀 허용
 			}
 		).formLogin(formLogin -> formLogin
 			.loginPage("/loginForm") // 로그인 From url 경로
