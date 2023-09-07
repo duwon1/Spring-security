@@ -38,8 +38,8 @@ public class SecurityConfig {
 				.requestMatchers("/user/**").authenticated() // 인증만 되면 허용됨
 				.requestMatchers("/manager/**").hasAnyRole("ADMIN", "MANAGER") // manager, admin 권한 둘중 하나가 있어야 허용
 				// 데이터베이스에 데이터를 저장할때 ROLE_XXXX 라고 반드시 저장해야 인식을 함
-			    .requestMatchers("/admin/**").hasRole("ADMIN") // admin 권한이 있어야 허용
-			    .anyRequest().permitAll(); // 위에 해당할 경우 무조껀 허용
+				.requestMatchers("/admin/**").hasRole("ADMIN") // admin 권한이 있어야 허용
+			    	.anyRequest().permitAll(); // 위에 해당할 경우 무조껀 허용
 			}
 		).formLogin(formLogin -> formLogin
 			.loginPage("/loginForm") // 로그인 From url 경로
