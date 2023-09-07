@@ -6,7 +6,7 @@ create database security;
 use security;
 ```
 ## 사용자 권한 설정 
-```java
+```java 
 package com.cos.security.config;
 
 import org.springframework.context.annotation.Bean;
